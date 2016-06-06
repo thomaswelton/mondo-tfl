@@ -1,0 +1,13 @@
+%ol.journeys
+  - journeys.each_with_index do |journey, index|
+    %li
+      %div.row
+        %span.from= journey.from
+        - unless journey.to.empty?
+          = '~'
+          %span.to= journey.to
+      %div.row.date= journey.time
+      %div.row.fare= journey.fare.format
+      - if index < journeys.size - 1
+        %hr
+

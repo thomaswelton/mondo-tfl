@@ -1,0 +1,14 @@
+- if current_user
+
+  %p Hey #{current_user.name}
+  %p Let's log into TFL and grab your travel information and then import it into Mondo.
+
+  .row
+    = simple_form_for current_user do |f|
+      = f.input :tfl_username, label: 'TFL Username'
+      = f.input :tfl_password, label: 'TFL Password', as: :string
+      = f.submit
+
+  - if current_user.tfl_username && current_user.tfl_password
+    .row
+      Great! We'll do the rest.

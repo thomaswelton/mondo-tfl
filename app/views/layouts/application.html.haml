@@ -1,0 +1,21 @@
+!!! 5
+%html
+  %head
+    %title Mondo TFL
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %link(href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css")
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .body.container
+      .login.u-pull-right
+        - if current_user
+          = link_to 'Log Out', logout_path, method: :delete, class: 'button'
+        - else
+          = link_to 'Log in with Mondo', '/auth/mondo', class: 'button button-primary'
+      %h1
+        = link_to 'Mondo TFL', root_path
+      %hr
+      .row
+        = yield
