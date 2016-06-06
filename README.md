@@ -12,6 +12,7 @@ Pulls in travel information from TFL, matches journeys to the transaction, gener
 
 - Refresh OAuth2 token so that the rake tasks below can be added to a daily cron job and run indefinitely. 
 - known slight bug in matching transactions, 99% of the time it matches all the time ;-)
+- only selects the first contactless card in TFL. So if you've been using contactless cards on TFL before and have multiple contactless cards registered @ contactless.tfl.gov.uk then it probably won't select the right card. Ideally Mondo-TFL would let you select which card to scrape.
 
 ## Getting Started
 
