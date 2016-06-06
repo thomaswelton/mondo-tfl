@@ -11,6 +11,7 @@ Pulls in travel information from TFL, matches journeys to the transaction, gener
 ## Todo
 
 - Refresh OAuth2 token so that the rake tasks below can be added to a daily cron job and run indefinitely. 
+- known slight bug in matching transactions, 99% of the time it matches all the time ;-)
 
 ## Getting Started
 
