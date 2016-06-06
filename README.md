@@ -10,7 +10,7 @@ Pulls in travel information from TFL, matches journeys to the transaction, gener
 
 ## Todo
 
-- Refresh OAuth2 token
+- Refresh OAuth2 token so that the rake tasks below can be added to a daily cron job and run indefinitely. 
 
 ## Getting Started
 
@@ -40,4 +40,19 @@ rails server
 open http://localhost:3000
 ```
 
+You'll then need to login, which will then take you through the Mondo OAuth implementation.
 
+Once logged in you now need to provide you Transport for London username & password.
+
+Now that both credentials have been stored in the application you can run the following rake command:
+
+```rake mondo_tfl:attach_receipts```
+
+This will cycle through each user in the local database and query both TFL & Mondo for TFL journeys.
+It will then generate a journey log in a JPG image and then upload to Amazon S3, and register the file with Mondo.
+
+To clear all the attached receipts use the following:
+
+```rake mondo_tfl:clear_receipts```
+
+It will cycle through each user in the local database and deregister the first file attached to each TFL transaction.
