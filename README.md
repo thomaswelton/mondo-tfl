@@ -41,18 +41,24 @@ open http://localhost:3000
 ```
 
 You'll then need to login, which will then take you through the Mondo OAuth implementation.
+Once you've logged in you now need to provide you Transport for London username & password.
 
-Once logged in you now need to provide you Transport for London username & password.
+With credentials for both TFL & Mondo stored the following rake tasks can be run:
 
-Now that both credentials have been stored in the application you can run the following rake command:
+```
+rake mt:pull_journeys
+```
 
-```rake mondo_tfl:attach_receipts```
+`pull_journeys` pulls journey information from TFL and stores it in the local journey table.
 
-This will cycle through each user in the local database and query both TFL & Mondo for TFL journeys.
-It will then generate a journey log in a JPG image and then upload to Amazon S3, and register the file with Mondo.
+```
+rake mt:attach_receipts
+```
 
-To clear all the attached receipts use the following:
+`attach_receipts` sequentially runs through the journey table and the outstanding Mondo transactions and matches them. It then generates a jouney log JPG and uploads to Amazon S3. The final step is registering the S3 file with Mondo.
 
-```rake mondo_tfl:clear_receipts```
+```
+rake mondo_tfl:clear_receipts
+```
 
-It will cycle through each user in the local database and deregister the first file attached to each TFL transaction.
+`clear_receipts` cycles through each user in the local database and deregisters the first file attached to each TFL transaction.

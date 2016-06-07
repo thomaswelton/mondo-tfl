@@ -1,5 +1,4 @@
 namespace :mt do
-
   task pull_journeys: :environment do
     User.all.each do |user|
       puts "#{user.name}"
