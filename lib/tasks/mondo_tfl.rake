@@ -1,4 +1,4 @@
-namespace :mondo_tfl do
+namespace :mt do
   task attach_receipts: :environment do
     User.all.each do |user|
       puts "#{user.name}"
