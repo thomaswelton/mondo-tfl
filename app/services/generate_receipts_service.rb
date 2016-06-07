@@ -4,7 +4,7 @@ class GenerateReceiptsService
   def initialize(args = {})
     @user = args.fetch(:user)
     @overwrite = args[:overwrite] == true
-    @tfl = TFL.new(username: user.tfl_username, password: user.tfl_password)
+    @tfl = TFL::Client.new(username: user.tfl_username, password: user.tfl_password)
   end
 
   def attach
