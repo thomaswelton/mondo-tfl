@@ -6,7 +6,10 @@
         - unless journey.to.empty?
           = '~'
           %span.to= journey.to
-      %div.row.date= journey.time
+      %div.row.date
+        = journey.date.to_s(:rfc822)
+      %div.row.time
+        = journey.time
       %div.row.fare= journey.fare.format
       - if index < journeys.size - 1
         %hr

@@ -4,13 +4,11 @@ class GenerateReceiptsService
   def initialize(args = {})
     @user = args.fetch(:user)
     @overwrite = args[:overwrite] == true
-    @tfl = TFL::Client.new(username: user.tfl_username, password: user.tfl_password)
   end
 
   def attach
     txs = user.transactions
     txs.each do |tx|
-      next if tx.settled.blank?
 
       # delete existing first attachment if exists
       if tx.attachments.first && overwrite
@@ -20,19 +18,11 @@ class GenerateReceiptsService
         next
       end
 
-      puts "-----------------"
-      puts "MONDO TRANSACTION"
-      puts "#{tx.id} | #{tx.settled} | #{tx.amount.abs}"
-
       # get journeys that closest resemble a transaction.
-      journeys_for_tx = find_journeys(@tfl, tx.settled, tx.amount.abs)
+      journeys_for_tx = match(tx.amount.abs)
 
-      puts "\tJOURNEYS"
-      journeys_for_tx.each do |journey|
-        puts "\t #{journey.from}-#{journey.to}, #{journey.date} | #{journey.fare}"
-      end
+      if journeys_for_tx.any?
 
-      if journeys_for_tx
         # generate JPG receipt of journeys
         html = ApplicationController.renderer.render('receipts/show', locals: {journeys: journeys_for_tx}, layout: 'receipts')
         kit = IMGKit.new(html, quality: 100, width: 800, height: 800)
@@ -53,30 +43,20 @@ class GenerateReceiptsService
           file_url: object.public_url,
           file_type: "image/jpg"
         )
+
+        journeys_for_tx.each do |journey|
+          journey.mondo_transaction_id = tx.id
+          journey.save
+        end
       end
     end
   end
 
   private
 
-  def find_journeys(tfl, date, amount)
-    @search_limit ||= date - 7 # search up to one week ago
-
-    journeys = tfl.journeys(on: date)
-    total    = tfl.total(on: date)
-
-    amount_doesnt_match = Money.new(total, :gbp) != Money.new(amount, :gbp)
-
-    if journeys.empty? || amount_doesnt_match
-      if date < @search_limit
-        @search_limit = nil
-        return []
-      else
-        return find_journeys(tfl, date - 1, amount)
-      end
-    else
-      @search_limit = nil
-      return journeys
-    end
+  def match(amount)
+    date_fares = self.user.journeys.order('date asc').unmatched.group(:date).sum(:fare)
+    date, amount = date_fares.find{ |d,v| v == Money.new(amount, :gbp).cents }
+    return self.user.journeys.where(date: date).all
   end
 end

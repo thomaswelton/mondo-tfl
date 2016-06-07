@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :journeys
+
   def mondo
     @mondo ||= Mondo::Client.new(token: token)
   end

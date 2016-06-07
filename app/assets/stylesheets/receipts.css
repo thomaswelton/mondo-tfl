@@ -35,7 +35,7 @@ ol.journeys {
   text-align: center;
 }
 
-.date {
+.date, .time {
   font-size: 24px;
   color: #CCC;
 }

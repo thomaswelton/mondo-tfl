@@ -12,3 +12,17 @@
   - if current_user.tfl_username && current_user.tfl_password
     .row
       Great! We'll do the rest.
+
+    .row
+      %h3 Journeys
+      %table
+        - current_user.journeys.order('date desc').group_by(&:date).each do |date, journeys|
+          %tr
+            %th(colspan=5)= date
+            - journeys.each do |journey|
+              %tr
+                %td= journey.time
+                %td= journey.from
+                %td= journey.to
+                %td= journey.fare.format
+                %td= journey.mondo_transaction_id
