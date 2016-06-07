@@ -22,6 +22,7 @@ gem 'aws-sdk'
 gem 'rest-client'
 
 group :development, :test do
+  gem 'pry'
   gem 'wkhtmltoimage-binary'
   gem 'dotenv-rails'
   gem 'byebug'
