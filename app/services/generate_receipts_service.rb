@@ -20,8 +20,17 @@ class GenerateReceiptsService
         next
       end
 
+      puts "-----------------"
+      puts "MONDO TRANSACTION"
+      puts "#{tx.id} | #{tx.settled} | #{tx.amount.abs}"
+
       # get journeys that closest resemble a transaction.
-      journeys_for_tx = @tfl.find_journeys(tx.settled, tx.amount.abs)
+      journeys_for_tx = find_journeys(@tfl, tx.settled, tx.amount.abs)
+
+      puts "\tJOURNEYS"
+      journeys_for_tx.each do |journey|
+        puts "\t #{journey.from}-#{journey.to}, #{journey.date} | #{journey.fare}"
+      end
 
       if journeys_for_tx
         # generate JPG receipt of journeys
@@ -29,7 +38,7 @@ class GenerateReceiptsService
         kit = IMGKit.new(html, quality: 100, width: 800, height: 800)
         kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/receipts.css"
 
-        puts 'upload jpg to s3'
+        # puts 'upload jpg to s3'
         s3 = Aws::S3::Resource.new
 
         bucket = s3.bucket(ENV['AWS_S3_BUCKET'])
@@ -37,14 +46,37 @@ class GenerateReceiptsService
         object = bucket.object(SecureRandom.uuid)
         object.put(body: kit.to_jpg, acl: 'public-read')
 
-        puts "register image into mondo"
-        puts object.public_url
+        # puts "register image into mondo"
+        # puts object.public_url
 
         tx.register_attachment(
           file_url: object.public_url,
           file_type: "image/jpg"
         )
       end
+    end
+  end
+
+  private
+
+  def find_journeys(tfl, date, amount)
+    @search_limit ||= date - 7 # search up to one week ago
+
+    journeys = tfl.journeys(on: date)
+    total    = tfl.total(on: date)
+
+    amount_doesnt_match = Money.new(total, :gbp) != Money.new(amount, :gbp)
+
+    if journeys.empty? || amount_doesnt_match
+      if date < @search_limit
+        @search_limit = nil
+        return []
+      else
+        return find_journeys(tfl, date - 1, amount)
+      end
+    else
+      @search_limit = nil
+      return journeys
     end
   end
 end

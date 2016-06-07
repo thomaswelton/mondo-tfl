@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/jameshill/tfl.git
-  revision: 3724a0d2c2da2880c1a66ad98ce22809726182e2
+  revision: e0dd0cf6f741568eeef124edbbe692d7129eaa95
   specs:
-    tfl (0.1.0)
+    tfl (0.3.0)
 
 GEM
   remote: https://rubygems.org/
