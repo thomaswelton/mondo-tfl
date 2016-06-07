@@ -4,7 +4,7 @@ Pulls in travel information from TFL, matches journeys to the transaction, gener
 
 ---
 
-![travel info in Mondo](https://cloud.githubusercontent.com/assets/395/15808595/e3bbfd0a-2b72-11e6-917e-560a387c15de.PNG)
+![travel info in Mondo](https://cloud.githubusercontent.com/assets/395/15869952/772f6df0-2ce6-11e6-9dc9-42f2f9714b63.PNG)
 
 ---
 
@@ -41,7 +41,7 @@ open http://localhost:3000
 ```
 
 You'll then need to login, which will then take you through the Mondo OAuth implementation.
-Once you've logged in you now need to provide you Transport for London username & password.
+Once you've logged in you now need to provide you Transport for London `username` & `password`.
 
 With credentials for both TFL & Mondo stored the following rake tasks can be run:
 
