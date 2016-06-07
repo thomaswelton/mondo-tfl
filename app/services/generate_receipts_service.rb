@@ -9,7 +9,6 @@ class GenerateReceiptsService
 
   def attach
     txs = user.transactions
-
     txs.each do |tx|
       next if tx.settled.blank?
 
