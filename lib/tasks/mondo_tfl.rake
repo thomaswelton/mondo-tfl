@@ -4,9 +4,13 @@ namespace :mondo_tfl do
       puts "#{user.name}"
       puts "refreshing token"
       user.request_new_token
-      grs = GenerateReceiptsService.new(user: user)
-      puts "attaching receipts"
-      grs.attach
+      if user.tfl_username && user.tfl_password
+        grs = GenerateReceiptsService.new(user: user)
+        puts "attaching receipts"
+        grs.attach
+      else
+        puts "No TFL username & password for USER #{user.name} <#{user.uid}>"
+      end
     end
   end
 
