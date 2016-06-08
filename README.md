@@ -4,7 +4,7 @@ Pulls in travel information from TFL, matches journeys to the transaction, gener
 
 ---
 
-![travel info in Mondo](https://cloud.githubusercontent.com/assets/395/15869952/772f6df0-2ce6-11e6-9dc9-42f2f9714b63.PNG)
+![travel info in Mondo](https://cloud.githubusercontent.com/assets/395/15885543/c873a992-2d4f-11e6-8eb6-2aca738e0875.jpg)
 
 ---
 
