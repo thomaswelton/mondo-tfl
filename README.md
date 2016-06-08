@@ -58,7 +58,7 @@ rake mt:attach_receipts
 `attach_receipts` sequentially runs through the journey table and the outstanding Mondo transactions and matches them. It then generates a jouney log JPG and uploads to Amazon S3. The final step is registering the S3 file with Mondo.
 
 ```
-rake mondo_tfl:clear_receipts
+rake mt:clear_receipts
 ```
 
 `clear_receipts` cycles through each user in the local database and deregisters the first file attached to each TFL transaction.
