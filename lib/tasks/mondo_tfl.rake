@@ -1,4 +1,9 @@
 namespace :mt do
+  task pull_and_attach: :environment do
+    Rake::Task["mt:pull_journeys"].invoke
+    Rake::Task["mt:attach_receipts"].invoke
+  end
+
   task pull_journeys: :environment do
     User.all.each do |user|
       puts "#{user.name}"
