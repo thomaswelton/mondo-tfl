@@ -1,6 +1,10 @@
 # Mondo TFL
 
-Pulls in travel information from TFL, matches journeys to the transaction, generates a JPG Receipt and attaches it to the Mondo transaction.
+This integration pulls in travel information from TFL, matches journeys to the transaction, generates a JPG Receipt and attaches it to the Mondo transaction.
+
+This is purely a Proof of Concept prototype. It can only be used by developers who have registered at https://developers.getmondo.co.uk
+
+In order to run this integration, as outlined below you'll need a Mondo Client Auth, it also uses AWS S3, so you'll need an AWS credentials.
 
 ---
 
@@ -41,7 +45,7 @@ open http://localhost:3000
 ```
 
 You'll then need to login, which will then take you through the Mondo OAuth implementation.
-Once you've logged in you now need to provide you Transport for London `username` & `password`.
+Once logged in you need to provide your Transport for London `username` & `password`.
 
 With credentials for both TFL & Mondo stored the following rake tasks can be run:
 
