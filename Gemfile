@@ -20,6 +20,7 @@ gem 'backport_new_renderer'
 gem 'imgkit'
 gem 'aws-sdk'
 gem 'rest-client'
+gem "attr_encrypted", "~> 3.0.0"
 
 group :development, :test do
   gem 'pry'

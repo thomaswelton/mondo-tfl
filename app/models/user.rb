@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  attr_encrypted :tfl_username, key: ENV['ATTR_SECRET_KEY']
+  attr_encrypted :tfl_password, key: ENV['ATTR_SECRET_KEY']
+
   has_many :journeys
 
   def mondo

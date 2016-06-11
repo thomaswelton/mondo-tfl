@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607132046) do
+ActiveRecord::Schema.define(version: 20160611124114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(version: 20160607132046) do
     t.datetime "expires_at"
     t.string   "tfl_username"
     t.string   "tfl_password"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "encrypted_tfl_username"
+    t.string   "encrypted_tfl_username_iv"
+    t.string   "encrypted_tfl_password"
+    t.string   "encrypted_tfl_password_iv"
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
