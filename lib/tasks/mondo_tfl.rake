@@ -7,14 +7,14 @@ namespace :mt do
   task pull_journeys: :environment do
     User.all.each do |user|
       puts "#{user.name}"
-      puts "refreshing token"
+      puts "Refreshing Token"
       user.request_new_token
-      if user.tfl_username && user.tfl_password
+      begin
         pjs = PullJourneysService.new(user: user)
-        puts "pulling in journeys"
+        puts "Requesting Journeys for #{user.name} <#{user.uid}>"
         pjs.pull
-      else
-        puts "No TFL username & password for USER #{user.name} <#{user.uid}>"
+      rescue => e
+        puts "ERROR PULLING JOURNEYS FOR USER: #{user.name} <#{user.uid}> #{e}"
       end
     end
   end
@@ -23,10 +23,10 @@ namespace :mt do
     User.all.each do |user|
       next unless user.mondo.account_id
       puts "#{user.name}"
-      puts "refreshing token"
+      puts "Refreshing Token"
       user.request_new_token
       grs = GenerateReceiptsService.new(user: user)
-      puts "attaching receipts"
+      puts "\tattaching receipts"
       grs.attach
     end
   end
