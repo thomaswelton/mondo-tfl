@@ -6,7 +6,7 @@ class PullJourneysService
     @tfl = TFL::Client.new(username: user.tfl_username, password: user.tfl_password)
   end
 
-  def pull
+  def call
     last_journey = user.journeys.last
 
     if last_journey

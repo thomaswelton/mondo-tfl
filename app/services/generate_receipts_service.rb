@@ -6,7 +6,7 @@ class GenerateReceiptsService
     @overwrite = args[:overwrite] == true
   end
 
-  def attach
+  def call
     txs = user.transactions
     txs.each do |tx|
 
