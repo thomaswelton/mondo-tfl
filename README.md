@@ -70,13 +70,12 @@ rake mt:clear_receipts
 
 ```
 rake mt:refresh_user_tokens
-
 ```
+
 `refresh_user_tokens` cycles through each user in the local database and refreshes their OAUTH `token`, `refresh_token` & `expires_at`
 
 
 ```
 rake mt:pull_and_attach
-
 ```
 `pull_and_attach` executes the following in sequence, `refresh_user_tokens`, `pull_journeys`, 'attach_receipts`
