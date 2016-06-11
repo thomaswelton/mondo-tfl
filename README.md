@@ -33,6 +33,7 @@ AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_REGION=eu-west-1
 AWS_S3_BUCKET=
+ATTR_SECRET_KEY=
 ```
 
 Once you have done the standard database creation and migration you should be all ready to explore
