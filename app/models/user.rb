@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_encrypted :tfl_password, key: ENV['ATTR_SECRET_KEY']
 
   has_many :journeys
+  has_many :cards
 
   def mondo
     @mondo ||= Mondo::Client.new(token: token)

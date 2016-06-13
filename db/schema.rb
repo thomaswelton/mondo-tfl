@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611131428) do
+ActiveRecord::Schema.define(version: 20160613091350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "tfl_card_id"
+    t.string   "last_4_digits"
+    t.string   "expiry"
+    t.string   "network"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
   create_table "journeys", force: :cascade do |t|
     t.integer  "user_id"
@@ -26,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160611131428) do
     t.string   "mondo_transaction_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "card_id"
   end
 
   add_index "journeys", ["user_id"], name: "index_journeys_on_user_id", using: :btree
@@ -49,5 +62,6 @@ ActiveRecord::Schema.define(version: 20160611131428) do
   add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "cards", "users"
   add_foreign_key "journeys", "users"
 end

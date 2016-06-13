@@ -6,7 +6,9 @@ namespace :mt do
   end
 
   task refresh_user_tokens: :environment do
-    User.all.each do |user|
+    users = User.order(:id)
+    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users.all.each do |user|
       begin
         puts "#{user.name}"
         puts "Refreshing Token"
@@ -18,7 +20,9 @@ namespace :mt do
   end
 
   task pull_journeys: :environment do
-    User.all.each do |user|
+    users = User.order(:id)
+    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users.all.each do |user|
       begin
         puts "Requesting Journeys for #{user.name} <#{user.uid}>"
         pjs = PullJourneysService.new(user: user)
@@ -30,7 +34,9 @@ namespace :mt do
   end
 
   task attach_receipts: :environment do
-    User.all.each do |user|
+    users = User.order(:id)
+    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users.all.each do |user|
       begin
         puts "Attaching Receipts to #{user.name} <#{user.uid}>"
         grs = GenerateReceiptsService.new(user: user)
@@ -42,7 +48,9 @@ namespace :mt do
   end
 
   task clear_receipts: :environment do
-    User.all.each do |user|
+    users = User.order(:id)
+    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users.all.each do |user|
       next unless user.mondo.account_id
       txs = user.transactions
       txs.each do |tx|
