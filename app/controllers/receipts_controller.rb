@@ -1,7 +1,7 @@
 class ReceiptsController < ApplicationController
   def show
     tfl = TFL::Client.new(username: current_user.tfl_username, password: current_user.tfl_password)
-    @journeys = tfl.journeys(on: Date.parse(params[:date]))
+    @journeys = tfl.journeys(date: Date.parse(params[:date]))
     respond_to do |format|
       format.html
       format.jpg do

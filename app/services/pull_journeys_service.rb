@@ -19,7 +19,7 @@ class PullJourneysService
     end
 
     while search_from <= Date.today.at_beginning_of_month.to_date do
-      @tfl.journeys(on: search_from)
+      @tfl.journeys(date: search_from)
       search_from = (search_from >> 1).at_beginning_of_month
     end
 
