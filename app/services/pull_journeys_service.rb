@@ -8,14 +8,13 @@ class PullJourneysService
 
   def call
     last_journey = user.journeys.last
-
     if last_journey
-      # if they've travelled before, then start the search from 7 days prior
-      search_from = last_journey.date - 7.days
+      # if they've travelled before, then start the search from the beginning of that month
+      search_from = last_journey.date.at_beginning_of_month
     else
       # No journeys, then what was the first transaction on their Mondo card?
       first_transaction = user.transactions.first
-      search_from = first_transaction.created - 7.days
+      search_from = first_transaction.created.at_beginning_of_month
     end
 
     while search_from <= Date.today.at_beginning_of_month.to_date do
