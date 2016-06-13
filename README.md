@@ -12,10 +12,6 @@ In order to run this integration, as outlined below you'll need a Mondo Client A
 
 ---
 
-## Todo
-
-- only selects the first contactless card in TFL. So if you've been using contactless cards on TFL before and have multiple contactless cards registered @ contactless.tfl.gov.uk then it probably won't select the right card. Ideally Mondo-TFL would let you select which card to scrape.
-
 ## Getting Started
 
 1. Login to https://developers.getmondo.co.uk/.
