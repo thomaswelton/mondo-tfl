@@ -32,8 +32,18 @@ class PullJourneysService
                                     date: j.date,
                                     time: j.time,
                                     fare: j.fare.cents,
+                           tapped_in_mod: time_to_mod(j.tapped_in_at),
+                          tapped_out_mod: time_to_mod(j.tapped_out_at),
                                  card_id: user.current_card.id).first_or_create
     end
     user.journeys
+  end
+
+  private
+
+  def time_to_mod(time_string)
+    return nil if time_string.nil?
+    hour, minute = time_string.split(':')
+    (hour.to_i * 60) + minute.to_i
   end
 end

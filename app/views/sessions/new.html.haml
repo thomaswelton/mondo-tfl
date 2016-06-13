@@ -20,14 +20,11 @@
         = f.input :tfl_password, label: 'TFL Password', as: :string
         = f.submit 'Go!'
 
-  - if current_user.tfl_username && current_user.tfl_password
-    .row
-      Great! We'll do the rest.
-
+  - if current_user.tfl_username && current_user.tfl_password && current_user.current_card && current_user.current_card.journeys.any?
     .row
       %h3 Journeys
       %table
-        - current_user.journeys.order('date desc').group_by(&:date).each do |date, journeys|
+        - current_user.current_card.journeys.order('date desc').group_by(&:date).each do |date, journeys|
           %tr
             %th(colspan=5)= date
             - journeys.each do |journey|
@@ -37,3 +34,8 @@
                 %td= journey.to
                 %td= journey.fare.format
                 %td= journey.mondo_transaction_id
+                %td
+                  = journey.tapped_in_mod
+                  - if journey.tapped_in_mod && journey.tapped_out_mod
+                    \-
+                  = journey.tapped_out_mod
