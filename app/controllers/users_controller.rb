@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     if current_user.save
       redirect_to root_path
     else
-      binding.pry
       render 'sessions/new'
     end
 
