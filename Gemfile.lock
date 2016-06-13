@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/jameshill/tfl.git
-  revision: 78f6c06cb13deea88cf73e7620db4d6ac9f05930
+  revision: 19bd3d66e45d495029799e7adb6a2efcbe98bafc
   specs:
     tfl (0.4.0)
 

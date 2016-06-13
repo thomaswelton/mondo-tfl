@@ -1,13 +1,24 @@
 - if current_user
 
   %p Hey #{current_user.name}
-  %p Let's log into TFL and grab your travel information and then import it into Mondo.
 
   .row
     = simple_form_for current_user do |f|
-      = f.input :tfl_username, label: 'TFL Username'
-      = f.input :tfl_password, label: 'TFL Password', as: :string
-      = f.submit
+      - if flash[:error]
+        %p
+          %strong= flash[:error]
+
+      - if current_user.cards.any?
+        = f.input :current_card_id, collection: current_user.cards, label: 'Which of the following is your Mondo card?'
+        - if current_user.current_card.nil?
+          = f.submit 'set card'
+        - else
+          = f.submit 'change card'
+      - else
+        %p Let's log into TFL and grab your travel information and then import it into Mondo.
+        = f.input :tfl_username, label: 'TFL Username'
+        = f.input :tfl_password, label: 'TFL Password', as: :string
+        = f.submit 'Go!'
 
   - if current_user.tfl_username && current_user.tfl_password
     .row

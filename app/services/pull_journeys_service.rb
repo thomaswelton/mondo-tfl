@@ -4,10 +4,14 @@ class PullJourneysService
   def initialize(args = {})
     @user = args.fetch(:user)
     @tfl = TFL::Client.new(username: user.tfl_username, password: user.tfl_password)
+    @current_card = @tfl.cards.find{|c| c.last_4_digits == user.current_card.last_4_digits &&
+                                        c.network == user.current_card.network &&
+                                        c.expiry == user.current_card.expiry }
   end
 
   def call
     last_journey = user.journeys.last
+
     if last_journey
       # if they've travelled before, then start the search from the beginning of that month
       search_from = last_journey.date.at_beginning_of_month
@@ -18,7 +22,7 @@ class PullJourneysService
     end
 
     while search_from <= Date.today.at_beginning_of_month.to_date do
-      @tfl.journeys(date: search_from)
+      @tfl.journeys(date: search_from, card: @current_card)
       search_from = (search_from >> 1).at_beginning_of_month
     end
 
@@ -27,9 +31,8 @@ class PullJourneysService
                                       to: j.to,
                                     date: j.date,
                                     time: j.time,
-                                    fare: j.fare.cents).first_or_create
-
-
+                                    fare: j.fare.cents,
+                                 card_id: user.current_card.id).first_or_create
     end
     user.journeys
   end
