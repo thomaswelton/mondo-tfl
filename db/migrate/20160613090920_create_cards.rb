@@ -6,7 +6,6 @@ class CreateCards < ActiveRecord::Migration
       t.string :last_4_digits
       t.string :expiry
       t.string :network
-
       t.timestamps null: false
     end
   end

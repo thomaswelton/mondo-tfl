@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_encrypted :tfl_username, key: ENV['ATTR_SECRET_KEY']
   attr_encrypted :tfl_password, key: ENV['ATTR_SECRET_KEY']
 
+  belongs_to :current_card, class_name: 'Card'
   has_many :journeys
   has_many :cards
 
