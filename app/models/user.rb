@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   end
 
   def tfl
-    @tfl ||= TFL::Clinet.new(username: tfl_username, password: tfl_password)
+    @tfl ||= TFL::Client.new(username: tfl_username, password: tfl_password)
   end
 
    def transactions
