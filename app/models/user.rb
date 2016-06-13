@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
     @mondo ||= Mondo::Client.new(token: token)
   end
 
+  def tfl
+    @tfl ||= TFL::Clinet.new(username: tfl_username, password: tfl_password)
+  end
+
    def transactions
     # BECAUSE JUST A DEMO request all transaction
     transactions = mondo.transactions
