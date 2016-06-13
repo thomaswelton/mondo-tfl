@@ -45,9 +45,9 @@ rails server
 open http://localhost:3000
 ```
 
-1. Click *Login with Mondo*
+1. Click `Login with Mondo`
 2. Once you're redirected back to MondoTFL you will need to provide your `username` & `password` for Transport for London.
-3. Click *Go!*, this will then query TFL and get your contactless cards.
+3. Click `Go!`, this will then query TFL and get your contactless cards.
 4. Select the card from the list which matches your Mondo card.
 
 With credentials for both TFL & Mondo stored and your Mondo card selected we can now run the following:
