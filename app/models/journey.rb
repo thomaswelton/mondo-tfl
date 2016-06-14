@@ -27,7 +27,7 @@ class Journey < ActiveRecord::Base
     where('date between ? AND ?', Date.today.at_beginning_of_week-7, Date.today.at_end_of_week-7)
   end
 
-  def self.last_week
+  def self.this_week
     where('date between ? AND ?', Date.today.at_beginning_of_week, Date.today.at_end_of_week)
   end
 end

@@ -58,4 +58,12 @@ namespace :mt do
       end
     end
   end
+
+  task tips: :environment do
+    users = User.order(:id)
+    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users.all.each do |user|
+      TFLTipService.new(user: user).call
+    end
+  end
 end
