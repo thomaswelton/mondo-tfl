@@ -18,7 +18,7 @@ class TFLTipService
         title: "Mondo TFL Stats",
         image_url: "https://raw.githubusercontent.com/jameshill/mondo-tfl/master/app/assets/images/mondo_tfl.png",
         body: message,
-        url: 'https://mondo-tfl.herokuapp.com/tips/peak',
+        url: "https://mondo-tfl.herokuapp.com/tips/peak?#{user.id}",
       )
     end
   end
