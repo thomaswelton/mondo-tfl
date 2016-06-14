@@ -1,0 +1,42 @@
+- if params[:tip] == 'peak'
+  %h1 Peak Journey Fees
+  %p
+    Did you know peak hour runs from 0630 till 0930?
+
+  .u-full-width
+    %h5 Journey prices to/from Zone 1
+    %table.u-full-width
+      %tr
+        %th
+        %th.fare Single: off-peak
+        %th.fare Single: peak
+
+      %tr
+        %th Zone 1
+        %td.fare £2.40
+        %td.peak.fare £2.40
+
+      %tr
+        %th Zone 1–2
+        %td.fare £2.40
+        %td.peak.fare £2.90
+
+      %tr
+        %th Zone 1–3
+        %td.fare £2.80
+        %td.peak.fare £3.30
+
+      %tr
+        %th Zone 1–4
+        %td.fare £2.80
+        %td.peak.fare £3.90
+
+      %tr
+        %th Zone 1–5
+        %td.fare £3.10
+        %td.peak.fare £4.70
+
+      %tr
+        %th Zone 1–6
+        %td.fare £3.10
+        %td.peak.fare £5.10

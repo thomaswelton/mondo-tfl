@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %title Mondo TFL Tips
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %link(href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css")
+    = stylesheet_link_tag 'tips', media: 'all'
+    = csrf_meta_tags
+  %body
+    .body.container
+      #logo= image_tag 'mondotfl'
+      .row
+        = yield

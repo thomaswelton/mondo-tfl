@@ -1,0 +1,35 @@
+// Place all the styles related to the Tips controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+ *= require normalize
+ *= require skeleton
+ *= require_self
+*/
+
+
+#logo {
+  margin-top: 10px;
+  text-align: center;
+  img {
+    width: 200px;
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px
+}
+
+ol.tips {
+  text-align: center;
+  list-style: none;
+}
+
+td.fare, th.fare {
+  text-align: center;
+}
+
+td.peak {
+  font-weight: bold;
+}
