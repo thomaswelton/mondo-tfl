@@ -1,10 +1,33 @@
-- if params[:tip] == 'peak'
-  %h1 Peak Journey Fees
+- case params[:tip]
+- when 'introduction'
+  %h1 Mondo TFL Introduction
+  %hr
   %p
-    Did you know peak hour runs from 0630 till 0930?
+    Hi! Thanks for beta testing my <strong>prototype</strong> Mondo Integration.
+  %p
+    Please know this is just a <strong>proof of concept</strong>.
+  %p
+    It runs on a <strong>free</strong> instance of the Heroku webservice. As a result, sometimes it's
+    not always instant.
+  %p
+    As TFL's website information is not realtime, this integration updates your TFL transactions
+    only once a day.
+  %p
+    If a TFL transaction doesn't have a journey breakdown attached to it, it most likely will appear at the next
+    daily update (Usually 5am).
 
+  %p
+    If you have any questions/suggestions, I'm in the Mondo Developers slack group under @jameshill,
+    or you can reach me at #{mail_to 'james.f.hill@gmail.com'}.
+
+- when 'peak'
+  %h1 Peak Journey Fees
+  %hr
+  %p
+    Did you know peak hour runs from 0630 till 0930 (Monday - Friday)?
+  %hr
   .u-full-width
-    %h5 Journey prices to/from Zone 1
+    %h4 Journey prices to/from Zone 1
     %table.u-full-width
       %tr
         %th
@@ -40,8 +63,7 @@
         %th Zone 1–6
         %td.fare £3.10
         %td.peak.fare £5.10
-
-    %h5 Journey prices to/from Zone 2
+    %h4 Journey prices to/from Zone 2
     %table.u-full-width
       %tr
         %th
@@ -72,3 +94,5 @@
         %th Zone 2–6
         %td.fare £1.50
         %td.peak.fare £2.80
+
+
