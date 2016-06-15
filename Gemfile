@@ -23,10 +23,12 @@ gem 'rest-client'
 gem "attr_encrypted", "~> 3.0.0"
 
 group :development, :test do
-  gem 'pry'
-  gem 'wkhtmltoimage-binary'
-  gem 'dotenv-rails'
   gem 'byebug'
+  gem 'dotenv-rails'
+  gem 'fakeweb'
+  gem 'pry'
+  gem "rspec-rails"
+  gem 'wkhtmltoimage-binary'
 end
 
 group :development do

@@ -2,7 +2,8 @@ class Journey < ActiveRecord::Base
   belongs_to :user
   belongs_to :card
 
-  scope :unmatched, -> {where(mondo_transaction_id: nil)}
+  scope :matched, -> { where('mondo_transaction_id IS NOT NULL') }
+  scope :unmatched, -> { where(mondo_transaction_id: nil) }
 
   def fare
     Money.new(self[:fare], :gbp)

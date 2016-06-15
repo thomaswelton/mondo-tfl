@@ -1,0 +1,249 @@
+tfl: &merchant_tfl
+  id: "merch_000092jBCaq2cHlL8pLVkP"
+  group_id: "grp_000092JYbUJtEgP9xND1Iv"
+  created: "2015-12-03T01:24:14.372Z"
+  name: "Transport for London"
+  logo: "https://mondo-logo-cache.appspot.com/twitter/tfl/?size=large"
+  emoji: "🚄"
+  category: "transport"
+  online: false
+  atm: false
+  address:
+    short_formatted: "Somewhere in London W2"
+    formatted: "London W2 United Kingdom"
+    address: ""
+    city: "London"
+    region: "Greater London"
+    country: "GBR"
+    postcode: "W2"
+    latitude: 51.51667440000001
+    longitude: -0.1769328
+    zoom_level: 15
+    approximate: true
+  updated: "2016-05-04T08:24:55.679Z"
+  metadata:
+    created_for_merchant: "merch_000092JYbUJXFziJUYDUS9"
+    created_for_transaction: "tx_000092jBCabVUKX3xYiolt"
+    foursquare_category: "Office"
+    foursquare_category_icon: "https://ss3.4sqi.net/img/categories_v2/building/default_88.png"
+    foursquare_id: "4be929db88ed2d7fa0a3cc1d"
+    foursquare_website: "http://www.tfl.gov.uk"
+    google_places_icon: "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png"
+    google_places_id: "ChIJ72B1j9sEdkgRIa40QIatrCM"
+    google_places_name: "Transport For London"
+    suggested_name: "Windsor House"
+    suggested_tags: "#transport #bus #train #tube"
+    twitter_id: "tfl"
+    website: "http://www.tfl.gov.uk"
+  disable_feedback: false
+
+waitrose: &merchant_waitrose
+  id: "merch_000094cijBjR0qFWTYAR7p"
+  group_id: "grp_000092JZmjCSLseg94Wpu5"
+  created: "2016-01-28T18:21:07.16Z"
+  name: "Waitrose"
+  logo: "https://mondo-logo-cache.appspot.com/twitter/waitrose/?size=large"
+  emoji: "🍏"
+  category: "groceries"
+  online: false
+  atm: false
+  address:
+    short_formatted: "Somewhere in London SW15"
+    formatted: "London SW15 United Kingdom"
+    address: ""
+    city: "London"
+    region: "Greater London"
+    country: "GBR"
+    postcode: "SW15"
+    latitude: 51.4639059
+    longitude: -0.2162866
+    zoom_level: 17
+    approximate: false
+  updated: "2016-02-01T11:09:07.29Z"
+  metadata:
+    created_for_merchant: "merch_000092JZmjBOPq9SZEhd7B"
+    created_for_transaction: "tx_000094cijBUXuCAfE6zuPR"
+    foursquare_category: "Supermarket"
+    foursquare_category_icon: "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_88.png"
+    foursquare_id: "4b97ec98f964a520c11f35e3"
+    foursquare_website: "http://www.waitrose.com"
+    google_places_icon: "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png"
+    google_places_id: "ChIJvaRBvg0PdkgRdw1ZmpCzEM8"
+    google_places_name: "Waitrose"
+    suggested_name: "Waitrose"
+    suggested_tags: "#groceries #food #real"
+    twitter_id: "waitrose"
+    website: "http://www.waitrose.com/"
+  disable_feedback: false
+
+with_attachments:
+  -
+    id: "tx_1"
+    created: "2016-05-12T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -650
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments:
+      - created: "2016-06-08T07:12:57.164Z"
+        external_id: "tx_1"
+        file_type: "image/jpg"
+        file_url: "https://mondo-tfl.s3-eu-west-1.amazonaws.com/3ab28d91-584c-4b9d-8104-ea52b95969ff"
+        id: "attach_0000991Mv7R7eXzb8tqfFh"
+        type: "image/jpg"
+        url: "https://mondo-tfl.s3-eu-west-1.amazonaws.com/3ab28d91-584c-4b9d-8104-ea52b95969ff"
+        user_id: "user_000096IQ0AaEqN9vQitJTd"
+    category: "transport"
+    is_load: false
+    settled: "2016-05-12T23:00:00.5Z"
+    local_amount: -650
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+first_import:
+  -
+    id: "tx_1"
+    created: "2016-05-17T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -150
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments: []
+    category: "transport"
+    is_load: false
+    settled: "2016-05-17T23:00:00.5Z"
+    local_amount: -150
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+  -
+    id: "tx_2"
+    created: "2016-05-18T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -580
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments: []
+    category: "transport"
+    is_load: false
+    settled: "2016-05-18T23:00:00.5Z"
+    local_amount: -580
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+  -
+    id: "tx_3"
+    created: "2016-05-20T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -240
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments: []
+    category: "transport"
+    is_load: false
+    settled: "2016-05-20T23:00:00.5Z"
+    local_amount: -240
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+  -
+    id: "tx_4"
+    created: "2016-05-21T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -240
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments: []
+    category: "transport"
+    is_load: false
+    settled: "2016-05-21T23:00:00.5Z"
+    local_amount: -240
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+second_import:
+  -
+    id: "tx_5"
+    created: "2016-05-22T08:24:56.827Z"
+    description: "TfL Travel Charge      TFL.gov.uk/CP GBR"
+    amount: -150
+    currency: "GBP"
+    merchant: *merchant_tfl
+    notes: ""
+    metadata: {}
+    account_balance: 7882
+    attachments: []
+    category: "transport"
+    is_load: false
+    settled: "2016-05-22T23:00:00.5Z"
+    local_amount: -150
+    local_currency: "GBP"
+    updated: ""
+    account_id: "acc_123"
+    counterparty: {}
+    scheme: "gps_mastercard"
+    dedupe_id: ""
+    originator: false
+
+non_tfl:
+  id: "tx_non_tfl"
+  created: "2016-05-12T08:24:56.827Z"
+  description: "Awesome Pies"
+  amount: -1250
+  currency: "GBP"
+  merchant: *merchant_waitrose
+  notes: ""
+  metadata: {}
+  account_balance: 7882
+  attachments: []
+  category: "transport"
+  is_load: false
+  settled: "2016-05-12T23:00:00.5Z"
+  local_amount: -1250
+  local_currency: "GBP"
+  updated: ""
+  account_id: "acc_123"
+  counterparty: {}
+  scheme: "gps_mastercard"
+  dedupe_id: ""
+  originator: false

@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
     return transactions
   end
 
+  def last_matched_journey_transaction_id
+    if journeys.matched.last
+      journeys.matched.order(:date).last.mondo_transaction_id
+    else
+      nil
+    end
+  end
+
   def request_new_token
     url = OmniAuth::Strategies::Mondo.default_options.client_options.token_url
     response = RestClient.post url, {'grant_type' => 'refresh_token', 'refresh_token' => refresh_token, 'client_id' => ENV['MONDO_CLIENT_ID'], 'client_secret' => ENV['MONDO_SECRET']}

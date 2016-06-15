@@ -1,0 +1,45 @@
+-
+  from: "Kew Gardens"
+  to: "East Putney"
+  date: "2016-05-16"
+  time: "13:55 - 14:33"
+  fare: 150
+  tapped_in_mod: 835
+  tapped_out_mod: 873
+
+-
+  from: "East Putney"
+  to: "Old Street"
+  date: "2016-05-17"
+  time: "09:14 - 09:45"
+  fare: 290
+  tapped_in_mod: 554
+  tapped_out_mod: 585
+
+-
+  from: "Old Street"
+  to: "East Putney"
+  date: "2016-05-17"
+  time: "17:07 - 17:37"
+  fare: 290
+  tapped_in_mod: 1027
+  tapped_out_mod: 1057
+
+-
+  from: "East Putney"
+  to: "Old Street"
+  date: "2016-05-19"
+  time: "17:54 - 18:34"
+  fare: 240
+  tapped_in_mod: 1074
+  tapped_out_mod: 1114
+
+-
+  from: "East Putney"
+  to: "South Kensington"
+  date: "2016-05-20"
+  time: "10:08 - 10:27"
+  fare: 240
+  tapped_in_mod: 608
+  tapped_out_mod: 627
+
