@@ -7,7 +7,7 @@ namespace :mt do
 
   task refresh_user_tokens: :environment do
     users = User.order(:id)
-    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']
     users.all.each do |user|
       begin
         puts "#{user.name}"
@@ -21,7 +21,7 @@ namespace :mt do
 
   task pull_journeys: :environment do
     users = User.order(:id)
-    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']
     users.all.each do |user|
       begin
         puts "Requesting Journeys for #{user.name} <#{user.uid}>"
@@ -35,7 +35,7 @@ namespace :mt do
 
   task attach_receipts: :environment do
     users = User.order(:id)
-    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']
     users.all.each do |user|
       begin
         puts "Attaching Receipts to #{user.name} <#{user.uid}>"
@@ -49,7 +49,7 @@ namespace :mt do
 
   task clear_receipts: :environment do
     users = User.order(:id)
-    users = users.where(id: ENV['USERID']) if ENV['USERID']
+    users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']
     users.all.each do |user|
       next unless user.mondo.account_id
       txs = user.transactions
@@ -59,11 +59,18 @@ namespace :mt do
     end
   end
 
-  task tips: :environment do
-    users = User.order(:id)
-    users = users.where(id: ENV['USERID']) if ENV['USERID']
-    users.all.each do |user|
-      TFLTipService.new(user: user).call
+  namespace :tip do
+    task introduction: :environment do
+      user = User.where(id: ENV['USER_ID']).first
+      TFLIntroductionTipService.new(user: user).call
+    end
+
+    task peak: :environment do
+      users = User.order(:id)
+      users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']
+      users.all.each do |user|
+        TFLPeakTipService.new(user: user).call
+      end
     end
   end
 end

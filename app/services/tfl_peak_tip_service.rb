@@ -1,5 +1,5 @@
-class TFLTipService
-  attr_accessor :user, :overwrite
+class TFLPeakTipService
+  attr_accessor :user
 
   def initialize(args = {})
     @user = args.fetch(:user)
