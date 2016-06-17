@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def last_matched_journey_transaction_id
-    if journeys.matched.last
+    if journeys.matched.any?
       journeys.matched.order(:date).last.mondo_transaction_id
     else
       nil
