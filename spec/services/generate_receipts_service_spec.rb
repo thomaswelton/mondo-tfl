@@ -100,6 +100,14 @@ describe 'GenerateReceiptsServiceSpec' do
         expect(@gsr.call).to eq(1)
       end
 
+      it 'should not add journeys to a transaction that has already been processed'
+      # i.e if we were to request transactions since (1 week before the last transaction), then it shouldn't match
+      # unmatched journeys with the transactions that already have journeys matched to them.
+      #
+      # i'm currently operating on the assumption that transactions are always settled in order
+      # i.e. another transaction can't be pushed into the feed at an earler date.
+      # which makes sense as we're using the pagination since: <date>
+      #
 
     end
   end

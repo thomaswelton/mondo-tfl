@@ -17,6 +17,10 @@ class GenerateReceiptsService
     txs = txs.select { |tx| tx.merchant && tx.merchant.name == 'Transport for London' }
 
     txs.each do |tx|
+
+      # TODO: probably good idea to degistrer ONLY MondoTFL created attachments
+      # will most likely need to search based on the URL and include an identifier
+      # in the url.
       tx.attachments.map { |a| a.deregister } if overwrite
 
       # get journeys that closest resemble a transaction.

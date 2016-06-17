@@ -4,7 +4,7 @@ This integration pulls in travel information from TFL, matches journeys to the t
 
 This is purely a Proof of Concept prototype. It can only be used by developers who have registered at https://developers.getmondo.co.uk
 
-In order to run this integration, as outlined below you'll need a Mondo Client Auth, it also uses AWS S3, so you'll need an AWS credentials.
+In order to run this integration, as outlined below you'll need a Mondo Client Auth.
 
 ---
 
@@ -25,10 +25,6 @@ In order to run this integration, as outlined below you'll need a Mondo Client A
 ```
 MONDO_CLIENT_ID=
 MONDO_SECRET=
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_REGION=eu-west-1
-AWS_S3_BUCKET=
 ATTR_SECRET_KEY=
 ```
 
@@ -58,7 +54,7 @@ rake mt:pull_journeys
 rake mt:attach_receipts
 ```
 
-`attach_receipts` sequentially runs through the journey table and the outstanding Mondo transactions and matches them. It then generates a jouney log JPG and uploads to Amazon S3. The final step is registering the S3 file with Mondo.
+`attach_receipts` sequentially runs through the journey table and the outstanding Mondo transactions and matches them. It then generates a jouney log JPG and uploads to Mondo's S3 bucket. The final step is registering the file with Mondo.
 
 ```
 rake mt:clear_receipts
