@@ -2,9 +2,7 @@
 
 This integration pulls in travel information from TFL, matches journeys to the transaction, generates a JPG Receipt and attaches it to the Mondo transaction.
 
-This is purely a Proof of Concept prototype. It can only be used by developers who have registered at https://developers.getmondo.co.uk
-
-In order to run this integration, as outlined below you'll need a Mondo Client Auth.
+There is an instance of the application running at: https://mondo-tfl.herokuapp.com
 
 ---
 
