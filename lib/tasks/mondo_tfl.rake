@@ -66,6 +66,11 @@ namespace :mt do
       TFLIntroductionTipService.new(user: user).call
     end
 
+    task incorrect_card: :environment do
+      user = User.where(id: ENV['USER_ID']).first
+      TFLTipIncorrectCardService.new(user: user).call
+    end
+
     task peak: :environment do
       users = User.order(:id)
       users = users.where(id: ENV['USER_ID']) if ENV['USER_ID']

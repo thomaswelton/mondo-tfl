@@ -19,7 +19,21 @@
   %p
     If you have any questions/suggestions, I'm in the Mondo Developers slack group under @jameshill,
     or you can reach me at #{mail_to 'james.f.hill@gmail.com'}.
-
+- when 'replacement-card'
+  %h1 New or Replaced Mondo Card?
+  %hr
+  %p
+    You're getting this message because it looks like you may have received
+    a new or replacement card from Mondo.
+  %p
+    You have new <strong>Transport for London</strong> transactions on your Mondo account, but we can't seem to find
+    matches on the TFL website with the card number ending with <strong>#{params[:current_card]}</strong>.
+  %p
+    If you're using a new card, all you need to do is first register it on <strong>#{link_to 'contactless.tfl.gov.uk', 'http://contactless.tfl.gov.uk'}</strong>
+    and then select this card from the dropdown at <strong>#{link_to 'mondo-tfl.herokuapp.com', 'http://mondo-tfl.herokuapp.com'}</strong>.
+  %p
+    Let me know if this isn't the case! I'm in the Mondo Developers slack group under @jameshill,
+    or you can reach me at #{mail_to 'james.f.hill@gmail.com'}.
 - when 'peak'
   %h1 Peak Journey Fees
   %hr
