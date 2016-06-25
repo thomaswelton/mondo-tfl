@@ -1,5 +1,7 @@
 # Mondo TFL
 
+[![Build Status](https://travis-ci.org/jameshill/mondo-tfl.svg?branch=master)](https://travis-ci.org/jameshill/mondo-tfl)
+
 This integration pulls in travel information from TFL, matches journeys to the transaction, generates a JPG Receipt and attaches it to the Mondo transaction.
 
 There is an instance of the application running at: https://mondo-tfl.herokuapp.com
