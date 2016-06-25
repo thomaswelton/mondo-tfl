@@ -2,3 +2,7 @@ sudo: false
 language: ruby
 rvm:
   - 2.2.4
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database mondo_tfl_test;' -U postgres
