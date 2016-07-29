@@ -4,8 +4,6 @@
 
 This integration pulls in travel information from TFL, matches journeys to the transaction, generates a JPG Receipt and attaches it to the Mondo transaction.
 
-There is an instance of the application running at: https://mondo-tfl.herokuapp.com
-
 ---
 
 ![travel info in Mondo](https://cloud.githubusercontent.com/assets/395/15885854/bdc720d0-2d51-11e6-8124-b6516f5fc6e3.jpg)
